@@ -1,0 +1,85 @@
+<!doctype html>
+	<head>
+		<style>
+			body {
+			    padding:20px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+			}
+			input {
+			    padding:5px;
+			    background-color:transparent;
+			    border:none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+			    border-bottom:solid 4px #8c52ff;
+			    width:250px;
+			    font-size:16px;
+			}
+			
+			.qr-btn {
+			    background-color:#8c52ff;
+			    padding:8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+			    color:white;
+			    cursor:pointer;
+			}
+            .card{
+               
+                width: 300px;
+                height: 450px;
+                 display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #c4f9ff;
+                border-radius: 10px;
+                padding: 10px;
+                margin: 10px;
+                display: inline-block;
+            }
+            
+		</style>
+		<title>JavaScript QR Code Generator</title>
+	</head>
+	<body>
+        <div class="card">
+		<h3>QR Code Generator</h3>
+        
+        <div><input id="qr-text" type="text" placeholder="Enter Text to generate QR code"/></div>
+        <br/>
+        <div>
+            <button class="qr-btn" onclick="generateQRCode()">Create QR Code</button>
+        </div>
+        <br/>
+        <p id="qr-result">This is deault QR code:</p>
+        <canvas id="qr-code"></canvas>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<script>
+			var qr;
+			(function() {
+                    qr = new QRious({
+                    element: document.getElementById('qr-code'),
+                    size: 200,
+                    value: 'https://varshithvhegde.me'
+                });
+            })();
+            
+            function generateQRCode() {
+                var qrtext = document.getElementById("qr-text").value;
+                document.getElementById("qr-result").innerHTML = "QR code for " + qrtext +":";
+              
+                qr.set({
+                    foreground: 'black',
+                    size: 200,
+                    value: qrtext
+                });
+            }
+		</script>
+        
+	</body>
+</html>
